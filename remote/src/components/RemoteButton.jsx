@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import useCount from '../store';
 
 export default function RemoteButton() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useCount();
 
   return (
     <button className="remote-button" onClick={() => setCount(count => count + 1)}>
