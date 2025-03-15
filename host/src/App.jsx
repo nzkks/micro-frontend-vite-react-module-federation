@@ -1,7 +1,9 @@
+import { lazy, Suspense } from 'react';
+
 import useStore from 'remoteApp/store';
 import './App.css';
 
-import RemoteButton from 'remoteApp/RemoteButton';
+const RemoteButton = lazy(() => import('remoteApp/RemoteButton'));
 
 function App() {
   const [count, setCount] = useStore();
@@ -9,7 +11,9 @@ function App() {
   return (
     <>
       <h1>Host React application</h1>
-      <RemoteButton />
+      <Suspense>
+        <RemoteButton />
+      </Suspense>
       <div className="card">
         {/* RemoteButton and the normal html button below recieves the same store */}
         <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
